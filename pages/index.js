@@ -16,9 +16,9 @@ export default function Home(){
 }
 
 export async function getServerSideProps() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts?title=json-server&author=typicode/todos/1');
-  const posts = await res.json()
-  console.log(posts)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}//InventoryItem/inquiry/1/10`);
+  const barang = await res.json()
+  console.log(barang)
   return {
     props: {
       posts:null,
