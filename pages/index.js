@@ -15,17 +15,13 @@ export default function Home(){
   )
 }
 
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-  const res = await fetch('https://.../posts')
+export async function getServerSideProps() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts?title=json-server&author=typicode/todos/1');
   const posts = await res.json()
-
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
+  console.log(posts)
   return {
     props: {
-      posts,
+      posts:null,
     },
   }
 }
