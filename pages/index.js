@@ -1,27 +1,19 @@
-import Layout from "../components/template/Layout";
-import Card from "../components/molecules/Card";
+import Layout from '@components/template/Layout';
+import HomeInventory from '@components/organisms/HomeInventory';
 
-export default function Home(){
+export default function Home({ data }) {
   return (
     <Layout>
-    <main className="layout">
-            <h1 className="text-xl font-bold">List Barang Inventory</h1>
-            <hr />
-            <div className="grid grid-cols-4">
-            <Card />
-            </div>
-    </main>
+      <HomeInventory data={data} />
     </Layout>
-  )
+  );
 }
 
-export async function getServerSideProps() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}//InventoryItem/inquiry/1/10`);
-  const barang = await res.json()
-  console.log(barang)
+export async function getStaticProps() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/InventoryItem/inquiry/0/5`);
+  const data = await res.json();
   return {
-    props: {
-      posts:null,
-    },
-  }
+    props: { data },
+    revalidate: 2,
+  };
 }
