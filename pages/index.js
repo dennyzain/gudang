@@ -1,5 +1,5 @@
-import Layout from '@components/template/Layout';
-import HomeInventory from '@components/organisms/HomeInventory';
+import Layout from '@/components/template/Layout';
+import HomeInventory from '@/components/organisms/HomeInventory';
 
 export default function Home({ data }) {
   return (
