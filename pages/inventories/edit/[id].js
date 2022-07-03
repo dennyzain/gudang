@@ -69,7 +69,10 @@ export default function EditInventory({ data }) {
             value={data.supplierId}
             {...register('supplierId', { required: true, maxLength: 20 })}
           />
-          <input className="border-[#eee] rounded-lg border-4 my-3" type="submit" />
+          <input
+            className="bg-blue-600 text-white p-2 my-2 rounded-lg hover:cursor-pointer"
+            type="submit"
+          />
         </form>
       </div>
     </Layout>

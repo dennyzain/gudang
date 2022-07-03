@@ -44,7 +44,10 @@ export default function addSupplier() {
             type="number"
             {...register('retailPrice', { required: true })}
           />
-          <input className="border-[#eee] rounded-lg border-4 my-3" type="submit" />
+          <input
+            className="bg-blue-600 text-white p-2 my-2 rounded-lg hover:cursor-pointer"
+            type="submit"
+          />
         </form>
       </div>
     </Layout>

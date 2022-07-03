@@ -1,15 +1,13 @@
 import Layout from '@/components/template/Layout';
 import { unstable_getServerSession } from 'next-auth/next';
 import Fetch from '@/fetch';
-import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import Input from '@/components/atoms/Input';
+import { Field, Form } from 'react-final-form';
 
 export default function addInventory() {
-  const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
-    console.log(data, 'data');
     const res = await Fetch({
       method: 'POST',
       url: `${process.env.NEXT_PUBLIC_URL}/InventoryItem/AddItem`,
@@ -25,16 +23,60 @@ export default function addInventory() {
       <div className="layout">
         <h1>Tambah Barang</h1>
         <hr />
-        <form onSubmit={handleSubmit(onSubmit)} className="grid grid-flow-row-dense my-2">
-          <Input {...register('sku', { required: true })} label="SKU" name="sku" type="text" />
-          <Input label="Nama Barang" name="name" type="text" />
-          <Input label="Harga Barang" name="costPrice" type="number" />
-          <Input label="Harga Retail" name="retailPrice" type="number" />
-          <Input label="Stok Barang" name="qty" type="number" />
-          <Input label="Margin Percentage" name="marginPercentage" type="number" />
-          <Input label="ID Supplier" name="supplierId" type="number" />
-          <input className="border-[#eee] rounded-lg border-4 my-3" type="submit" />
-        </form>
+        <Form onSubmit={onSubmit}>
+          {(props) => {
+            return (
+              <form onSubmit={props.handleSubmit}>
+                <Field name="sku" type="text" label="SKU" render={Input} placeholder="Jumlah SKU" />
+                <Field
+                  name="name"
+                  type="number"
+                  label="Nama Barang"
+                  render={Input}
+                  placeholder="Nama Barang"
+                />
+                <Field
+                  name="costPrice"
+                  type="number"
+                  label="Harga Barang"
+                  render={Input}
+                  placeholder="Jumlah Harga Barang"
+                />
+                <Field
+                  name="retailPrice"
+                  type="number"
+                  label="Harga Retail"
+                  render={Input}
+                  placeholder="Jumlah Harga Retail"
+                />
+                <Field
+                  name="qty"
+                  type="number"
+                  label="Stok Barang"
+                  render={Input}
+                  placeholder="Jumlah Stok Barang"
+                />
+                <Field
+                  name="marginPercentage"
+                  type="number"
+                  label="Margin Percentage"
+                  placeholder="Jumlah Margin Percentage"
+                  render={Input}
+                />
+                <Field
+                  name="supplierID"
+                  type="number"
+                  label="ID Supplier"
+                  render={Input}
+                  placeholder="ID Supplier"
+                />
+                <button className="bg-blue-600 flex text-white p-2 my-2 rounded-lg" type="submit">
+                  Submit
+                </button>
+              </form>
+            );
+          }}
+        </Form>
       </div>
     </Layout>
   );
