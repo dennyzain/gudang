@@ -2,7 +2,6 @@ import Layout from '@/components/template/Layout';
 import { useForm } from 'react-hook-form';
 
 export default function addSupplier() {
-  const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
     const res = await Fetch({
       method: 'POST',

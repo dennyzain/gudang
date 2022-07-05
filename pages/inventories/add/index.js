@@ -1,5 +1,5 @@
-import Layout from '@/components/template/Layout';
 import { unstable_getServerSession } from 'next-auth/next';
+import Layout from '@/components/template/Layout';
 import Fetch from '@/fetch';
 import { toast } from 'react-toastify';
 import { authOptions } from '@/pages/api/auth/[...nextauth]';

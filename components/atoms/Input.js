@@ -1,4 +1,4 @@
-export default function Input({ type, name, label, value, input, placeholder }) {
+export default function Input({ type, label, value, input, placeholder }) {
   console.log(input);
   return (
     <div className="flex flex-col">

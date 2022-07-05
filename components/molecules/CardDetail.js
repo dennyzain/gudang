@@ -13,7 +13,7 @@ export default function CardDetail({ data }) {
         {data?.postCode ?? 'Tidak Ada'}
       </p>
       <Link href={`/inventories/edit/${data.id}`}>
-        <button className="border-black border-4 p-1 my-2 rounded-lg">Update Barang</button>
+        <button className="bg-blue-600 text-white p-2 my-2 rounded-lg ml-2">Update Barang</button>
       </Link>
     </div>
   );
