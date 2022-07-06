@@ -13,6 +13,7 @@ export default function addInventory() {
       url: `${process.env.NEXT_PUBLIC_URL}/InventoryItem/AddItem`,
       data,
     });
+
     res.status === 'success'
       ? toast.success('Tambah Barang Berhasil!')
       : toast.error('Gagal Menambah Barang!');
@@ -30,7 +31,7 @@ export default function addInventory() {
                 <Field name="sku" type="text" label="SKU" render={Input} placeholder="Jumlah SKU" />
                 <Field
                   name="name"
-                  type="number"
+                  type="string"
                   label="Nama Barang"
                   render={Input}
                   placeholder="Nama Barang"

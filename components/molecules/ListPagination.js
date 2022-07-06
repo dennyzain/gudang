@@ -2,11 +2,33 @@ import { useEffect, useState } from 'react';
 import Fetch from '@/fetch';
 import { useDispatch } from 'react-redux';
 import { setDataFetch, setPagination } from '@/store/globalSlice';
+import { useQuery } from 'react-query';
 
 export default function ListPagination() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+
   const [pagination, setPagination] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+
+  const getPages = async () => {
+    const res = await Fetch({
+      method: 'GET',
+      url: `${process.env.NEXT_PUBLIC_URL}/InventoryItem/inquiry/${pagination}/5`,
+    });
+    return res;
+  };
+  const { data } = useQuery('getPage', getPages);
+  console.log(data, 'data dari query');
+
+  // const handlePagination = async () => {
+  //   const res = await Fetch({
+  //     method: 'GET',
+  //     url: `${process.env.NEXT_PUBLIC_URL}/InventoryItem/inquiry/${pagination}/5`,
+  //   });
+  //   dispatch(setDataFetch(res.data.data));
+  //   setTotalPages(res.data.totalPages);
+  // };
+
   const handlePagination = async () => {
     const res = await Fetch({
       method: 'GET',
@@ -14,8 +36,8 @@ export default function ListPagination() {
     });
     dispatch(setDataFetch(res.data.data));
     setTotalPages(res.data.totalPages);
-    console.log(res);
   };
+
   useEffect(() => {
     handlePagination();
   }, [pagination]);
@@ -27,7 +49,6 @@ export default function ListPagination() {
   };
 
   const prevPage = () => {
-    console.log(totalPages, 'total Pages');
     if (pagination >= 0) {
       setPagination(pagination - 1);
     }

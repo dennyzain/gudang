@@ -5,12 +5,11 @@ import { getInventories } from '@/utils';
 import { useQueryClient, useQuery } from 'react-query';
 
 export default function Home(props) {
-  const { data, isLoading, isFetching } = useQuery('listInventories', getInventories, {
+  const { data, isLoading, isFetching } = useQuery('getInventories', getInventories, {
     initialData: props,
   });
-  const queryClient = useQueryClient();
-  console.log(queryClient, 'data query client');
 
+  console.log(data, 'this a use query result');
   return (
     <Layout>
       <HomeInventory
