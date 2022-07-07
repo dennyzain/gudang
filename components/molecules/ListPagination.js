@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Fetch from '@/fetch';
-import { useDispatch } from 'react-redux';
 import { setDataFetch, setPagination } from '@/store/globalSlice';
 import { useQuery } from 'react-query';
 
