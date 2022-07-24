@@ -2,7 +2,6 @@ import HomeSupplier from '@/components/organisms/HomeSupplier';
 import Layout from '@/components/template/Layout';
 
 export default function index({ data }) {
-  console.log(data);
   return (
     <Layout>
       <HomeSupplier data={data.data} />

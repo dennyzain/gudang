@@ -41,7 +41,6 @@ export default function HomeInventory(props) {
     }
   };
 
-  console.log(isFetching, 'is fetching render at ');
   return (
     <main className="layout">
       <button onClick={handleRedirect} className="bg-blue-600 text-white p-2 my-2 rounded-lg">
@@ -69,7 +68,7 @@ export default function HomeInventory(props) {
             >
               Previous
             </button>
-            <p>{page}</p>
+            <p>{page + 1}</p>
             <button
               disabled={page === data.data.totalPages}
               onClick={nextPage}
